@@ -1,3 +1,11 @@
-opencv-python-headless
-streamlit
-streamlit-drawable-canvas
+# Firstly you need to create a virtual enviroument:
+# pip3 install pipenv
+# Then you should go to your project and write:
+# pipenv shell 
+# You should also install all the requirements:
+# pipenv install streamlit
+# opencv-python-headless
+# streamlit
+# streamlit-drawable-canvas
+# Then you can run the program writting: 
+# streamlit run app.py

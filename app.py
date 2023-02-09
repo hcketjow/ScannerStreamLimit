@@ -68,9 +68,10 @@ def load_model_DL_R50(num_classes=2, device=torch.device("cpu"), img_size=384):
     return model
 
 #I need to change to take better photos
-def main(input_file, image_size=4096):
+def main(input_file, image_size=16384):
     file_bytes = np.asarray(bytearray(input_file.read()), dtype=np.uint8)
-    image = cv2.imdecode(file_bytes, 1)[:, :, ::-1]
+    image = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
+    # image = cv2.imdecode(file_bytes, 1)[:, :, ::-1]
     output = None
     model = model_mbv3 if model_selected == "MobilenetV3-Large" else model_r50
     output = deep_learning_scan(og_image=image, trained_model=model, image_size=image_size)
@@ -121,3 +122,4 @@ with tab1:
         file_upload = st.camera_input("Capture Document", disabled=not run)
         if file_upload is not None:
             _ = main(input_file=file_upload, image_size=IMAGE_SIZE)
+
